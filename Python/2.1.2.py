@@ -1,6 +1,8 @@
 #list list -> list
 #Funcion que multiplica matrices
-#Ej: multiplicar_matrices(matriz1,matriz2) entrega [[2,3,7],[3,8,21]]
+#Ej:matriz1 = [[2,1],[3,5]] 
+#   matriz2 = [[1,1,2],[0,1,3]]
+#   multiplicar_matrices(matriz1,matriz2) -> [[2,3,7],[3,8,21]]
 def multiplicar_matrices(a,b):
     filas_a = len(a)
     columnas_a = len(a[0])
