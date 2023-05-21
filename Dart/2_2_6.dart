@@ -14,7 +14,7 @@ void main() {
   }
   print("la multiplicacion de las primeras listas es: $c");
   List<int> d = [];
-  for (int i = 0; i <= 5; i++) {
+  for (int i = 0; i < 5; i++) {
     int numerito = Random().nextInt(5) - 5;
     d.add(numerito);
   }
