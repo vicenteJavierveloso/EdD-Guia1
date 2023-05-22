@@ -1,8 +1,30 @@
-#crear_identidad: list -> list
-#Funcion que dada una matriz cuadrada de orden n
-#Entrega una matriz identidad de orden n
-#Ej:matriz = [[1,2,3,4],[3,2,1,3],[3,1,2,3],[3,2,1,5]]
-#   crear_identidad(a) -> [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+import random as ran
+
+n = ran.randint(3,5)
+
+matriz = []
+for i in range(n):
+    aux = []
+    for j in range(n):
+        aux.append(ran.randint(1,3))
+    matriz.append(aux)
+
+def matrizastr(m:list):
+    aux_str = ""
+    for i in range(len(m)):
+        aux_str += str(m[i]) + "\n"
+    return aux_str
+
+def escalarxfila(escalar:float,fila:int,matriz:list):
+    for i in range(len(matriz[fila])):
+        matriz[fila][i] = matriz[fila][i]*escalar
+    return None
+
+def restarfilas(fila1:list,fila2:list):
+    for i in range(len(fila1)):
+        fila1[i] = fila1[i]-fila2[i]
+    return None
+
 def crear_identidad(a:list):
     filas = len(a)
     columnas = len(a[0])
@@ -20,10 +42,6 @@ def crear_identidad(a:list):
     else:
         return None
 
-#aumentar_matriz: list list -> list
-#Funcion que aumenta una matriz A con una matriz B de la misma cantidad de filas entregando (A|b)
-#Ej: matriz = [[1,2,3,4],[3,2,1,3],[3,1,2,3],[3,2,1,5]]
-#    matriz_identidad = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
 def aumentar_matriz(a:list,b:list):
     if len(a)==len(b):
         for i in range(len(a)):
@@ -32,20 +50,21 @@ def aumentar_matriz(a:list,b:list):
     else:
         return None
 
-# def escalarxfila(escalar:int,fila:int,matriz:list):
-#     fila = matriz[fila]
-#     for i in range(len(fila)):
-#         fila[i] = fila[i]*escalar
-#     return fila
-
-# def sumarfilas(fila1:list,fila2:list):
-#     for i in range(len(fila1)):
-#         fila1[i] = fila1[i]+fila2[i]
-#     return fila1
-
-matriz = [[1,2,3,4],[3,2,1,3],[3,1,2,3],[3,2,1,5]]
-
 matriz_identidad = crear_identidad(matriz)
+
 #Aumentar
-matriz_aumentada = aumentar_matriz(matriz,matriz_identidad)
-print(matriz_aumentada)
+print(f"La matriz original es \n{matrizastr(matriz)}")
+matriz_a = aumentar_matriz(matriz,matriz_identidad)
+print(f"La matriz aumentada con su identidad es: \n{matrizastr(matriz_a)}")
+
+#Triangular la matriz
+
+for j in range(n):
+    for i in range(n):
+        if i>=j:
+            escalarxfila(1/matriz_a[i][j],i,matriz_a)
+    for i in range(n-1):
+        if i>=j:
+            restarfilas(matriz_a[i+1],matriz_a[j])
+
+print(f"{matrizastr(matriz_a)}")
