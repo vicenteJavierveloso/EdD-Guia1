@@ -1,0 +1,3 @@
+- Niska Javiera Silva Duhalde
+- Vicente Javier Veloso Gomez
+- Felipe Rodrigo Vera Jara
